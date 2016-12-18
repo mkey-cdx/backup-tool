@@ -8,35 +8,39 @@
 # Updated: 18 December 2016
 #
 # This is a simple backup tool based on rsync and SSH.
-# It creates a full backup from a remote machine to the local machine which 
-# runs the script.
+# It backups selected directories from a remote machine to the local machine 
+# which runs the script.
 #
 # IP or FQDN of remote machine
-r_host=
+r_host=remote_host
 # Remote username
-r_user=
+r_user=remote_user
 # Location of passphraseless ssh keyfile
-r_key=
+ssh_key=/path/to/local/ssh_keyfile
 # Directories to backup. Separate with a space. Exclude trailing slash
-sources=""
+sources="/path/to/remote/directory"
 # Directory to backup to on the local machine. Exclude trailing slash.
-target=""
+target="/path/to/local/backup"
 # Comment out the following line to enable verbose output.
 #verbose="-v"
 # ==============================================================================
 
-# SSH key verifications.
-if [ ! -f $r_key ]; then
+# SSH keyfile checking.
+if [ ! -f $key ]; then
   echo "Couldn't find ssh keyfile!"
   echo "Exiting..."
   exit 2
 fi
 
-if ! ssh -i $r_key $r_user@$r_host "test -x $sources"; then
+# Remote permissions checking.
+if ! ssh -i $key $r_user@$r_host "test -x $sources"; then
   echo "Target directory on remote machine doesn't exist or bad permissions."
   echo "Exiting..."
   exit 2
 fi
+
+# Set name (date) of backup.
+backup_date="`date +%F_%H-%M`"
 
 #DAY=$(date +%A)
 #
