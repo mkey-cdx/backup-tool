@@ -12,7 +12,7 @@
 # which runs the script.
 #
 # ==============================================================================
-
+test
 # Get backup config.
 source backup.cfg
 
