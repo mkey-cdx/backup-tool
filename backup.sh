@@ -40,7 +40,7 @@ for source in $sources; do
     fi
 
     # Create local backup directory.
-    if [ -e $backup_dir/$source ]; then
+    if [ ! -d $backup_dir/$source ]; then
         mkdir -p $backup_dir/$source
     fi
 
