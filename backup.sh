@@ -18,7 +18,7 @@ source backup.cfg
 
 # Get incremental dates
 current_date=`date -I`
-#last_date=`date -I -d "1 "$interval" ago"`
+last_date=`date -I -d "1 "$interval" ago"`
 
 # SSH keyfile checking
 if [ ! -f $ssh_key ]; then
