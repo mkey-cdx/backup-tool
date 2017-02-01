@@ -4,12 +4,16 @@
 # Rsync remote backup tool
 #
 # Maintainer: Mickaël Coiraton
-# Version 0.0.1
-# Updated: 18 December 2016
+# Version 0.1.0
+# Updated: 1 Febuary 2016
 #
-# This is a simple rotating backups tool based on rsync and SSH.
+# This is a simple rotating backup tool based on rsync and SSH.
 # It backups selected directories from a remote host to the local machine 
 # which runs the script.
+#
+# Please edit the provided backup-tool.cfg file to match your needs.
+# Note that you must set up a passphraseless SSH key pair and add the public
+# key to your remote host authorized_keys file.
 #
 # ==============================================================================
 
